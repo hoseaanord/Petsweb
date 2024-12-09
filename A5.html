@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: purple;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .sidebar nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar nav ul a {
+      color: white;
+      text-decoration: none;
+      padding:  10px 15px;
+      font-size: 18px;
+      display: inline-block;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      background-color: rgb(66, 7, 66)
+    }
+    .sidebar nav ul a:hover{
+      background-color: rgb(224, 170, 224);
+      border-radius: 2px;
+    }
+
+        .sidebar nav ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .username {
+            color: white;
+            font-size: 16px;
+            margin-top: 10px;
+            font-weight: normal;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #fff;
+            overflow-y: auto;
+            background-image: url("back.jpg");
+        }
+
+        .welcome-message {
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        fieldset {
+            border: 2px solid #ec11da;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-size: 1.2em;
+            color: #d117b8;
+            padding: 0 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #f308df;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(224, 170, 224);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <img src="default-avatar.jpg" id="profile-img" alt="Profile Picture">
+                <input type="file" id="upload-img" accept="image/*" style="display:none;">
+                <button onclick="document.getElementById('upload-img').click();">Upload Profile Picture</button>
+                <div id="username" class="username">Welcome, Guest</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showForm('adopt')">Adopt</a></li>
+                    <li><a href="#" onclick="showForm('donate')">Donate</a></li>
+                    <li><a href="#" onclick="showForm('resources')">Resources</a></li>
+                    <li><a href="#" onclick="showForm('articles')">my application</a></li>
+                    <li><a href="#" onclick="showForm('contact')">log out</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Welcome Message -->
+            <div class="welcome-message" id="welcome-section">
+                Welcome, User!
+            </div>
+
+            <!-- Adopt Form -->
+            <div id="adopt" class="form-section">
+                <h1>Pet Adoption Form</h1>
+                <form action="/submit-adoption-form" method="POST">
+                    <table>
+                        <tr>
+                            <!-- Left Column -->
+                            <td style="vertical-align: top; padding-right: 20px;">
+                                <fieldset>
+                                    <legend>Personal Details</legend>
+                                    <label for="fullName">Full Name:</label><br>
+                                    <input type="text" id="fullName" name="fullName" required><br><br>
+            
+                                    <label for="email">Email:</label><br>
+                                    <input type="email" id="email" name="email" required><br><br>
+            
+                                    <label for="phone">Phone Number:</label><br>
+                                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="1234567890" required><br><br>
+                                </fieldset>
+            
+                                <fieldset>
+                                    <legend>Address</legend>
+                                    <label for="street">Street Address:</label><br>
+                                    <input type="text" id="street" name="street" required><br><br>
+            
+                                    <label for="city">City:</label><br>
+                                    <input type="text" id="city" name="city" required><br><br>
+            
+                                    <label for="zip">ZIP Code:</label><br>
+                                    <input type="text" id="zip" name="zip" required><br><br>
+                                </fieldset>
+                            </td>
+            
+                            <!-- Right Column -->
+                            <td style="vertical-align: top;">
+                                <fieldset>
+                                    <legend>Pet Preferences</legend>
+                                    <label for="petType">Type of Pet:</label><br>
+                                    <select id="petType" name="petType" required>
+                                        <option value="">--Select--</option>
+                                        <option value="dog">Dog</option>
+                                        <option value="cat">Cat</option>
+                                        <option value="bird">Bird</option>
+                                        <option value="other">Other</option>
+                                    </select><br><br>
+            
+                                    <label for="breed">Preferred Breed (if any):</label><br>
+                                    <input type="text" id="breed" name="breed"><br><br>
+            
+                                    <label>Gender:</label><br>
+                                    <input type="radio" id="male" name="gender" value="male" required>
+                                    <label for="male">Male</label><br>
+                                    <input type="radio" id="female" name="gender" value="female">
+                                    <label for="female">Female</label><br><br>
+                                </fieldset>
+            
+                                <fieldset>
+                                    <legend>Additional Information</legend>
+                                    <label for="experience">Do you have experience with pets?</label><br>
+                                    <textarea id="experience" name="experience" rows="4" cols="25"></textarea><br><br>
+            
+                                    <label for="reason">Why do you want to adopt a pet?</label><br>
+                                    <textarea id="reason" name="reason" rows="4" cols="25" required></textarea><br><br>
+                                </fieldset>
+                            </td>
+                        </tr>
+                    </table>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+                <div id="donate" class="form-section">
+                    <h1>Pet Donation Form</h1>
+                    <form action="/submit-donation-form" method="POST">
+                        <fieldset>
+                            <legend>Donor Information</legend>
+                            <label for="donorName">Full Name:</label>
+                            <input type="text" id="donorName" name="donorName" required>
+                            
+                            <label for="donorEmail">Email Address:</label>
+                            <input type="email" id="donorEmail" name="donorEmail" required>
+                            
+                            <label for="donorPhone">Phone Number:</label>
+                            <input type="tel" id="donorPhone" name="donorPhone" pattern="[0-9]{10}" placeholder="1234567890" required>
+                        </fieldset>
+    
+                        <fieldset>
+                            <legend>Pet Information</legend>
+                            <label for="petName">Pet Name:</label>
+                            <input type="text" id="petName" name="petName" required>
+    
+                            <label for="petType">Type of Pet:</label>
+                            <select id="petType" name="petType" required>
+                                <option value="">--Select--</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="bird">Bird</option>
+                                <option value="other">Other</option>
+                            </select>
+    
+                            <label for="petAge">Pet Age (if known):</label>
+                            <input type="text" id="petAge" name="petAge">
+    
+                            <label for="petHealth">Pet Health Condition:</label>
+                            <textarea id="petHealth" name="petHealth" rows="4"></textarea>
+                        </fieldset>
+    
+                        <fieldset>
+                            <legend>Donation Information</legend>
+                            <label for="donationAmount">Donation Amount (in USD):</label>
+                            <input type="number" id="donationAmount" name="donationAmount" min="1" required>
+    
+                            <label for="donationMethod">Preferred Donation Method:</label>
+                            <select id="donationMethod" name="donationMethod" required>
+                                <option value="">--Select--</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="bank">Bank Transfer</option>
+                                <option value="cash">Cash Donation</option>
+                            </select>
+                        </fieldset>
+    
+                        <button type="submit">Submit Donation</button>
+                    </form>
+    
+        </div>
+    </div>
+
+    <script>
+        // Function to show the corresponding form and hide others
+        function showForm(formId) {
+            document.getElementById('welcome-section').style.display = 'none'; // Hide welcome message
+            const sections = document.querySelectorAll('.form-section');
+            sections.forEach(section => section.style.display = 'none'); // Hide all forms
+            const activeSection = document.getElementById(formId);
+            if (activeSection) activeSection.style.display = 'block'; // Show the selected form
+        }
+
+        // Handle profile picture upload
+        document.getElementById('upload-img').addEventListener('change', function(e) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                document.getElementById('profile-img').src = event.target.result;
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        });
+    </script>
+</body>
+</html>

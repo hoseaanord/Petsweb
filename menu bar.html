@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Purple Menu</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+        .menu-container {
+            background: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            padding: 20px;
+        }
+        .menu-header {
+            font-size: 28px;
+            font-weight: bold;
+            color: #6f42c1;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .menu-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .menu-options a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 15px 20px;
+            border-radius: 25px;
+            background: linear-gradient(90deg, #9b59b6, #8e44ad);
+            transition: all 0.3s ease-in-out;
+        }
+        .menu-options a:hover {
+            background: linear-gradient(90deg, #8e44ad, #9b59b6);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu-header">Explore Our World</div>
+        <div class="menu-options">
+            <a href="#about-us">About Us</a>
+            <a href="#contact-us">Contact Us</a>
+            <a href="#articles">Articles</a>
+        </div>
+    </div>
+</body>
+</html>
