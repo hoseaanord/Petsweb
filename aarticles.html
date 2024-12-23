@@ -57,10 +57,12 @@
     .article-section {
       margin-bottom: 40px;
       padding: 20px;
-      background: white;
+      background: rgb(223, 209, 219);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
       margin-top: 80px;
+      border-top-left-radius: 40px;
+      border-bottom-right-radius: 40px
     }
 
     .article-section h2 {
@@ -96,17 +98,37 @@
       background-color: darkviolet;
     }
 
-    footer {
-      background-color: purple;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
+    /* Footer */
+    footer{
+            background-color: purple;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-family: Arial, sans-serif;
+            height: fit-content;  
+        }
+        .footer-top a {
+              color: white;
+              text-decoration: none;
+              margin: 0 10px;
+              font-size: 14px;
+      }
 
-    footer a {
-      color: white;
-      text-decoration: none;
-    }
+            .footer-icons {
+              margin: 20px 0;
+              }
+
+.footer-icons img {
+  width: 32px;
+  height: 32px;
+  margin: 0 10px;
+  border-radius: 50%;
+}
+
+.footer-bottom p {
+  margin: 5px 0;
+  font-size: 14px;
+}
 
     /* Success Stories and FAQ Styling */
     .success-stories,
@@ -162,8 +184,7 @@
     <!-- Introduction Section -->
     <section class="article-section">
       <h2>Why Adopt a Pet?</h2>
-      <p>Adopting a pet is a life-changing decision that not only saves the life of an animal but also enriches your own. Many pets are waiting for a loving home in shelters, and adoption helps reduce the number of stray animals in the community. The bond between you and your adopted pet is special, and it brings great joy and responsibility into your life.</p>
-      <p>In this section, we'll explore the **benefits of adoption**, provide tips on **how to care for your pet**, and offer some success stories that show the positive impact of adopting animals.</p>
+      <p>Adopting a pet is a rewarding experience that not only enriches your life but also saves an animal in need. Every year, millions of cats, dogs, and other animals end up in shelters, often through no fault of their own, waiting for loving homes. By choosing adoption, you give these animals a second chance at life while combating the demand for unethical breeding practices. Pets bring immense joy, companionship, and unconditional love, enhancing mental and emotional well-being. Additionally, adopting from shelters is often more affordable than buying from breeders, and many pets come spayed, neutered, or vaccinated, reducing your initial costs. When you adopt, you’re not just gaining a pet—you’re making a lifelong friend and contributing to a compassionate, humane world.</p>
     </section>
 
     <!-- Benefits of Adoption -->
@@ -228,10 +249,31 @@
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2024 Pets Adoption. All rights reserved.</p>
-    <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a>
-  </footer>
+ <!-- Footer -->
+ <footer>
+  <div class="footer-top">
+    <a href="#">Shelter & Rescue Registration</a> |
+    <a href="#">Sitemap</a> |
+    <a href="#">Terms of Service</a> |
+    <a href="#">Notice at Collection</a> |
+    <a href="#">Privacy Policy (updated)</a> |
+    <a href="#">Accessibility</a> |
+    <a href="#">Cookie Policy</a> |
+    <a href="#">Your Privacy Choices</a>
+  </div>
+
+  <div class="footer-icons">
+    <a href="#"><img src="fb.png" alt="Facebook"></a>
+    <a href="#"><img src="x.png" alt="Twitter"></a>
+    <a href="#"><img src="ig.jpeg" alt="Instagram"></a>
+    <a href="#"><img src="ytube.png" alt="you tube"></a>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy;2024 Petfinder.com</p>
+    <p>All trademarks are owned by Société des Produits Nestlé S.A., or used with permission.</p>
+  </div>
+</footer>
 
 </body>
 </html>

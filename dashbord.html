@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Header with Profile Upload</title>
+  <style>
+    /* Reset and Global Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      background-image: url("back.jpg");
+    }
+
+    /* Header Styling */
+    header {
+      background-color: purple;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 97vw;
+      top: 0%;
+    }
+
+    /* Profile Section */
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .profile img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid white;
+      cursor: pointer;
+    }
+
+    .profile h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    /* Hidden File Input */
+    #profile-upload {
+      display: none;
+    }
+
+    /* Navigation Menu */
+    nav {
+      display: flex;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      display: inline-block;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 8px;
+      background-color: #f30cb9;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    nav ul li a:hover {
+      background-color: #c27cb0;
+      border: 2px solid #1d3557;
+    }
+
+
+    /* Content Sections */
+    .content-section {
+      display: none;
+      padding: 20px;
+      background-color: #fff;
+      margin: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .dashboard-header {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 28px;
+      font-weight: bold;
+      color: #1d3557;
+    }
+    .pet-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adds spacing between cards */
+  justify-content: space-between; /* Distributes cards evenly */
+  margin-top: 20px; /* Adds spacing above the container */
+}
+
+.pet-card {
+  flex: 1 1 calc(33.333% - 20px); /* Ensures three columns */
+  max-width: calc(33.333% - 20px);
+  background-color: #fff; /* Adds a white background for contrast */
+  border: 1px solid #ccc; /* Adds a border for each card */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+  padding: 15px;
+  box-sizing: border-box; /* Includes padding and border in size */
+  text-align: center; /* Centers content inside the card */
+}
+
+.pet-card img {
+  max-width: 100%; /* Ensures image fits card width */
+  border-radius: 8px; /* Adds rounded corners to images */
+}
+
+.pet-card h3 {
+  font-size: 1.2rem;
+  color: #1d3557;
+  margin: 10px 0 5px;
+}
+
+.pet-card p {
+  font-size: 1rem;
+  color: black;
+  margin: 5px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pet-card {
+    flex: 1 1 calc(50% - 20px); /* Adjusts to two columns */
+  }
+}
+
+@media (max-width: 480px) {
+  .pet-card {
+    flex: 1 1 100%; /* Adjusts to one column */
+  }
+}
+
+
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .profile h1 {
+        font-size: 20px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      .dashboard-header {
+        font-size: 24px;
+      }
+    }
+
+    /* General styling for all forms (Adopt and Donate) */
+form {
+  width: 80%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form heading styling */
+form h2 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Fieldset styling for better organization */
+fieldset {
+  border: 2px solid #e0e0e0;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+legend {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Label styling */
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Input, select, and textarea fields styling */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  width: 97%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Submit button styling */
+button[type="submit"] {
+  background-color: #4CAF50; /* Green for adopt form */
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  width: 100%;
+  margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Specific styles for Adopt Form */
+#adopt {
+  background-color: #eaf6e0; /* Light green background for adopt form */
+}
+
+#adopt button[type="submit"] {
+  background-color: #28a745; /* Darker green for the submit button */
+}
+
+#adopt h2 {
+  color: #4CAF50; /* Green text for the adopt form title */
+}
+
+/* Specific styles for Donate Form (assuming similar structure) */
+#donate {
+  background-color: #f0f8ff; /* Light blue background for donate form */
+}
+
+#donate button[type="submit"] {
+  background-color: purple; /* Blue for the submit button */
+}
+
+#donate h2 {
+  color: purple; /* Blue text for the donate form title */
+}
+#donation p{
+  font-weight: 100px;
+  color: purple;
+}
+
+/* Responsive design adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+  form {
+    width: 95%;
+    padding: 15px;
+  }
+
+  form h2 {
+    font-size: 1.6rem;
+  }
+
+  button[type="submit"] {
+    padding: 12px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header id="main-header">
+    <!-- Profile Section -->
+    <div class="profile">
+      <label for="profile-upload">
+        <img src="https://via.placeholder.com/50" alt="User Profile Picture" id="profile-pic">
+      </label>
+      <input type="file" id="profile-upload" accept="image/*">
+      <h1 id="user-dashboard">User Dashboard</h1>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav>
+      <ul>
+        <li><a data-target="available-pets" href="#">Available Pets</a></li>
+        <li><a data-target="adopt" href="#">Adopt</a></li>
+        <li><a data-target="donate" href="#">Donate</a></li>
+        <li><a data-target="my-application" href="#">My Application</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="dashboard-header">User Dashboard</div>
+
+  <!-- Content Sections -->
+ <!-- Content Sections -->
+<div id="available-pets" class="content-section">
+  <h2>Available Pets</h2>
+  <p>Here are the pets available for adoption.</p>
+  <div class="pet-container">
+    <!-- Pet 1 -->
+    <div class="pet-card">
+      <img src="https://via.placeholder.com/200" alt="Cat 1">
+      <h3>Whiskers</h3>
+      <p><strong>Age: </strong> 2 years</p>
+      <p><strong>Breed: </strong>Siamese</p>
+      <p><strong>Gender: </strong>Male</p>
+      <p><strong>Temperament: </strong>Friendly</p>
+    </div>
+    <!-- Pet 2 -->
+    <div class="pet-card">
+      <img src="https://via.placeholder.com/200" alt="Cat 2">
+      <h3>Buddy</h3>
+      <p><strong>Age: </strong> 3 years</p>
+      <p><strong>Breed: </strong>Labrador Retriever</p>
+      <p><strong>Gender: </strong>Female</p>
+      <p><strong>Temperament: </strong>Shy</p>
+    </div>
+    <!-- Pet 3 -->
+    <div class="pet-card">
+      <img src="https://via.placeholder.com/200" alt="Dog 1">
+      <h3>Luna</h3>
+      <p><strong>Age: </strong> 2 years</p>
+      <p><strong>Breed: </strong>persian cat</p>
+      <p><strong>Gender: </strong>Female</p>
+      <p><strong>Temperament: </strong>Friendly</p>
+    </div>
+    <!-- Pet 4 -->
+    <div class="pet-card">
+      <img src="https://via.placeholder.com/200" alt="Dog 2">
+      <h3>Max</h3>
+      <p><strong>Age: </strong> 3 years</p>
+      <p><strong>Breed: </strong>Golden Retriever</p>
+      <p><strong>Gender: </strong>Male</p>
+      <p><strong>Temperament: </strong>Playful</p>
+    </div>
+    <!-- Pet 5 -->
+    <div class="pet-card">
+      <img src="https://via.placeholder.com/200" alt="Rabbit 1">
+      <h3>Milo</h3>
+      <p><strong>Age: </strong> 1 years</p>
+      <p><strong>Breed: </strong>Bengal cat</p>
+      <p><strong>Gender: </strong>female</p>
+      <p><strong>Temperament: </strong>shy</p>
+    </div>
+    <!-- Pet 6 -->
+    <div class="pet-card">
+      <img src="https://via.placeholder.com/200" alt="Bird 1">
+      <h3>Rocky</h3>
+      <p><strong>Age: </strong> 2 years</p>
+      <p><strong>Breed: </strong>Beagle</p>
+      <p><strong>Gender: </strong>Male</p>
+      <p><strong>Temperament: </strong>Friendly</p>
+    </div>
+    <!-- Pet 7 -->
+    <div class="pet-card">
+      <img src="https://via.placeholder.com/200" alt="Cat 3">
+      <h3>Simba</h3>
+      <p><strong>Age: </strong> 3 years</p>
+      <p><strong>Breed: </strong>Ragdoll</p>
+      <p><strong>Gender: </strong>Male</p>
+      <p><strong>Temperament: </strong>playful</p>
+    </div>
+    <!-- Pet 8 -->
+    <div class="pet-card">
+      <img src="https://via.placeholder.com/200" alt="Dog 3">
+      <h3>Shadow</h3>
+      <p><strong>Age: </strong> 2 years</p>
+      <p><strong>Breed: </strong>Buldog</p>
+      <p><strong>Gender: </strong>Male</p>
+      <p><strong>Temperament: </strong>Friendly</p>
+    </div>
+    <!-- Pet 9 -->
+    <div class="pet-card">
+      <img src="https://via.placeholder.com/200" alt="Bird 2">
+      <h3>Chloe</h3>
+      <p><strong>Age: </strong> 2 years</p>
+      <p><strong>Breed: </strong>German Shepherd</p>
+      <p><strong>Gender: </strong>Male</p>
+      <p><strong>Temperament: </strong>shy</p>>
+    </div>
+    <!-- Pet 10 -->
+    <div class="pet-card">
+      <img src="https://via.placeholder.com/200" alt="Dog 4">
+      <h3>Daisy</h3>
+      <p><strong>Age: </strong> 2 years</p>
+      <p><strong>Breed: </strong>Bulldog</p>
+      <p><strong>Gender: </strong>Male</p>
+      <p><strong>Temperament: </strong>playful</p>
+    </div>
+    <!-- Pet 11 -->
+    <div class="pet-card">
+      <img src="https://via.placeholder.com/200" alt="Cat 4">
+      <h3>pussy</h3>
+      <p><strong>Age: </strong> 2 years</p>
+      <p><strong>Breed: </strong>Siamese</p>
+      <p><strong>Gender: </strong>Male</p>
+      <p><strong>Temperament: </strong>Friendly</p>
+    </div>
+    <!-- Pet 12 -->
+    <div class="pet-card">
+      <img src="https://via.placeholder.com/200" alt="Rabbit 2">
+      <h3>Moriss</h3>
+      <p><strong>Age: </strong> 2 years</p>
+      <p><strong>Breed: </strong>German Shepherd</p>
+      <p><strong>Gender: </strong>Male</p>
+      <p><strong>Temperament: </strong>Friendly</p>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+  <div id="adopt" class="content-section">
+    <h2>Adopt a Pet</h2>
+    <form action="/submit-adoption-form" method="POST" id="adoptForm">
+      <fieldset>
+        <legend>Pet Information</legend>
+        <label for="petName">Pet Name:</label>
+        <input type="text" id="petName" name="petName" required placeholder="Enter pet's name">
+  
+        <label for="petType">Pet Type:</label>
+        <select id="petType" name="petType" required>
+          <option value="">Select Pet Type</option>
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+          <option value="bird">Bird</option>
+          <option value="other">Other</option>
+        </select>
+  
+        <label for="petBreed">Pet Breed:</label>
+        <input type="text" id="petBreed" name="petBreed" placeholder="Enter pet's breed">
+  
+        <label for="petAge">Pet Age:</label>
+        <input type="number" id="petAge" name="petAge" required placeholder="Enter pet's age in years">
+  
+        <label for="petGender">Pet Gender:</label>
+        <select id="petGender" name="petGender" required>
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="unknown">Unknown</option>
+        </select>
+  
+        <label for="petDescription">Description:</label>
+        <textarea id="petDescription" name="petDescription" rows="4" placeholder="Describe the pet's personality and needs"></textarea>
+      </fieldset>
+  
+      <fieldset>
+        <legend>Adopter Information</legend>
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+  
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email">
+  
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required placeholder="Enter your phone number">
+  
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required placeholder="Enter your address">
+  
+        <label for="adoptReason">Why do you want to adopt this pet?</label>
+        <textarea id="adoptReason" name="adoptReason" rows="4" placeholder="Please explain why you'd be a good fit"></textarea>
+      </fieldset>
+  
+      <fieldset>
+        <legend>Additional Information</legend>
+        <label for="otherPets">Do you have other pets?</label>
+        <select id="otherPets" name="otherPets">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+  
+        <label for="adoptionExperience">Have you adopted a pet before?</label>
+        <select id="adoptionExperience" name="adoptionExperience">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+  
+        <label for="housingType">Type of Housing:</label>
+        <select id="housingType" name="housingType" required>
+          <option value="">Select Housing Type</option>
+          <option value="house">House with yard</option>
+          <option value="apartment">Apartment</option>
+          <option value="condo">Condo</option>
+          <option value="other">Other</option>
+        </select>
+      </fieldset>
+  
+      <fieldset>
+        <legend>Terms and Conditions</legend>
+        <label>
+          <input type="checkbox" name="terms" required> I agree to the terms and conditions
+        </label>
+      </fieldset>
+  
+      <button type="submit">Submit Adoption Request</button>
+    </form>
+  </div>
+  
+
+  <div id="donate" class="content-section">
+    <p>Support our cause by donating.</p>
+    <h2>Pets Donation Form</h2>
+    <form action="/submit_donation" method="POST">
+        <!-- Personal Information -->
+        <h3>Personal Information</h3>
+        <label for="name">Full Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email Address:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="phone" name="phone" required><br><br>
+        
+        <!-- Donation Details -->
+        <h3>Donation Details</h3>
+        <label for="amount">Donation Amount (USD):</label><br>
+        <input type="number" id="amount" name="amount" min="1" required><br><br>
+        
+        <label for="type">Donation Type:</label><br>
+        <select id="type" name="type" required>
+            <option value="money">Monetary Donation</option>
+            <option value="supplies">Supplies (Food, Toys, etc.)</option>
+            <option value="volunteering">Volunteering</option>
+        </select><br><br>
+        
+        <label for="message">Additional Message:</label><br>
+        <textarea id="message" name="message" rows="4" placeholder="Write your message here..."></textarea><br><br>
+        
+        <!-- Submit Button -->
+        <button type="submit">Submit Donation</button>
+    </form>
+
+  </div>
+
+  <div id="my-application" class="content-section">
+    <h2>My Application</h2>
+    <div id="my-applications" class="content-section" style="display: none;">
+      <div id="applicationsList"></div>
+    </div>
+    
+    <script>
+      const applications = []; // Store applications globally
+    
+      function showSection(sectionId) {
+        // Hide all sections
+        document.querySelectorAll('.content-section').forEach(section => {
+          section.style.display = 'none';
+        });
+    
+        // Show the target section
+        const targetSection = document.getElementById(sectionId);
+        targetSection.style.display = 'block';
+    
+        // Load applications only when 'my-applications' is shown
+        if (sectionId === 'my-applications') {
+          loadApplications();
+        }
+      }
+    
+      function submitAdoptForm() {
+        const petName = document.getElementById('petName').value;
+        const adopterName = document.getElementById('adopterName').value;
+        const adopterReason = document.getElementById('adopterReason').value;
+    
+        const application = {
+          type: 'Adoption',
+          petName,
+          adopterName,
+          adopterReason,
+        };
+    
+        saveApplication(application);
+      }
+    
+      function submitDonateForm() {
+        const donorName = document.getElementById('donorName').value;
+        const donationAmount = document.getElementById('donationAmount').value;
+    
+        const application = {
+          type: 'Donation',
+          donorName,
+          donationAmount,
+        };
+    
+        saveApplication(application);
+      }
+    
+      function saveApplication(application) {
+        applications.push(application); // Save to global list
+        alert('Application submitted successfully!');
+        clearForm(application.type);
+      }
+    
+      function loadApplications() {
+        const applicationsList = document.getElementById('applicationsList');
+        applicationsList.innerHTML = ''; // Clear previous entries
+    
+        if (applications.length === 0) {
+          applicationsList.innerHTML = '<p>No applications submitted yet.</p>';
+          return;
+        }
+    
+        applications.forEach(app => {
+          const applicationEntry = document.createElement('div');
+          applicationEntry.innerHTML = `
+            <p><strong>Type:</strong> ${app.type}</p>
+            ${app.petName ? `<p><strong>Pet Name:</strong> ${app.petName}</p>` : ''}
+            ${app.adopterName ? `<p><strong>Adopter Name:</strong> ${app.adopterName}</p>` : ''}
+            ${app.adopterReason ? `<p><strong>Reason:</strong> ${app.adopterReason}</p>` : ''}
+            ${app.donorName ? `<p><strong>Donor Name:</strong> ${app.donorName}</p>` : ''}
+            ${app.donationAmount ? `<p><strong>Donation Amount:</strong> $${app.donationAmount}</p>` : ''}
+            <hr>
+          `;
+          applicationsList.appendChild(applicationEntry);
+        });
+      }
+    
+      function clearForm(formType) {
+        if (formType === 'Adoption') {
+          document.getElementById('adoptForm').reset();
+        } else if (formType === 'Donation') {
+          document.getElementById('donateForm').reset();
+        }
+      }
+    
+      // Initialize with no content displayed
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.style.display = 'none';
+      });
+    </script>
+    
+  </div>
+
+  <script>
+    // JavaScript to handle profile picture upload
+    const profileUpload = document.getElementById('profile-upload');
+    const profilePic = document.getElementById('profile-pic');
+
+    profileUpload.addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          profilePic.src = e.target.result; // Update the profile picture
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // JavaScript to handle navigation click
+    const navLinks = document.querySelectorAll('nav a');
+    const contentSections = document.querySelectorAll('.content-section');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        const targetId = link.getAttribute('data-target');
+
+        // Hide all sections
+        contentSections.forEach(section => {
+          section.style.display = 'none';
+        });
+
+        // Show the targeted section
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          targetSection.style.display = 'block';
+        }
+      });
+    });
+
+    // Function to set username in the dashboard
+    function setUsername(username) {
+      const userDashboard = document.getElementById('user-dashboard');
+      userDashboard.textContent = `${username}'s Dashboard`;
+    }
+
+    // Example usage: Simulating account creation and login
+    // Replace this with your actual logic for fetching the username
+    const username = localStorage.getItem('username') || 'Guest'; // Fetch username from storage or default to Guest
+    setUsername(username);
+
+    // Save username on account creation (example simulation)
+    function createAccount(newUsername) {
+      localStorage.setItem('username', newUsername);
+      setUsername(newUsername);
+    }
+
+    // Example usage: createAccount('JohnDoe');
+  </script>
+</body>
+</html>
