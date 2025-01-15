@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Finder</title>
+    <title>AdoptNest - Home</title>
     <style>
         /* General Styles */
         * {
@@ -16,7 +16,7 @@
 
         body {
             line-height: 1.6;
-            background-color: blue;
+            background-color: #f4f4f9;
         }
 
         /* Header Styles */
@@ -27,60 +27,38 @@
             padding: 20px 30px;
             background-color: purple;
             color: white;
-            height: 100px;
             font-size: 1.5rem;
             font-weight: bold;
         }
 
-        .header-icon{
-            margin-top: 20px;
-            margin-left: 270%;
-            width: 60px;
-            height:60px;
-            border-radius: 50px
-        }
-        .logo{
+        .logo {
             width: 80px;
             height: 80px;
-            border-radius: 50%;
+            border-radius: 10%;
         }
-        /* Navigation Bar Styles */
-.navbar {
-    display: flex;
-    justify-content: center;
-    margin-left: 20px;
-}
 
-.navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 10px;
-}
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
 
-.navbar li {
-    display: inline;
-}
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+            padding: 15px 10px;
+            background-color: rgb(68, 13, 68);
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
 
-.navbar a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    padding: 10px 5px;
-    transition: background-color 0.3s ease;
-    background-color: rgb(66, 7, 66);
-    border-radius: 5px;
-    display: inline-block;
-}
+        .navbar a:hover {
+            background-color: #f50298;
+        }
 
-.navbar a:hover {
-    background-color: #e05555;
-    border-radius: 5px;
-}
-
-       
-
-        /* Hero Section */
-        .hero {
+       /* Hero Section */
+       .hero {
         background-image: url('hh.png');
         background-size: cover;
             color: white;
@@ -125,7 +103,7 @@
         }
 
         .search-form button:hover {
-            background-color: #e05555;
+            background-color: #f50298;
         }
 
 
@@ -141,133 +119,136 @@
             font-size: 2.5em;
             margin-bottom: 20px;
         }
+        .view-pets-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: purple;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+}
 
-        /* Featured Pets Section */
-        .featured-pets {
-            padding: 50px 20px;
-            background-color: rgb(245, 228, 245);
-        }
+.view-pets-button:hover {
+    background-color: #f50298;
+}
 
-        .featured-pets h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2em;
-        }
 
-        .pet-cards {
+        /* Dynamic Pets Section */
+        .dynamic-pets {
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
+            align-items: center;
+            padding: 50px 20px;
+            background-color: #fff;
             gap: 20px;
         }
 
-        .pet-card {
-            background: white;
-            border: 1px solid #ddd;
+        .dynamic-pets .text {
+            flex: 1;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-right: 20px;
+        }
+
+        .dynamic-pets .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 300px;
+        }
+
+        .dynamic-pets img {
+            width: 90%;
+            max-height: 100%;
             border-radius: 10px;
-            width: 30%;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            transition: opacity 0.5s ease-in-out;
+            position: absolute;
         }
 
-        .pet-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        /* Adoption Process Section */
+        .adoption-process {
+            background-color: #f9f9f9;
+            padding: 50px 20px;
+            text-align: center;
         }
 
-        .pet-card .card-content {
-            padding: 20px;
-            text-align: left;
-        }
-
-        .pet-card .card-content h3 {
-            margin-bottom: 10px;
-            font-size: 1.2em;
-        }
-
-        .pet-card .card-content p {
-            font-size: 0.9em;
-            color: #555;
+        .adoption-process h2 {
+            font-size: 2em;
             margin-bottom: 20px;
         }
-        .pet-card button{
-            background-color: palevioletred;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            border: none;
-            padding: 10px 20px;
-            align-items: center;
-        }
-        .pet-card button:hover{
-            background-color: peru;
+
+        .adoption-process .steps {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .pet-card {
-                width: 45%;
-            }
+        .adoption-process .step {
+            flex: 1;
+            max-width: 250px;
+            text-align: center;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        @media (max-width: 480px) {
-            .pet-card {
-                width: 100%;
-            }
+        .adoption-process .step img {
+            width: 200px;
+            height: 150px;
+            margin-bottom: 10px;
+            border-radius: 2px;
         }
 
         /* Footer */
-        footer{
+        footer {
             background-color: purple;
             color: white;
             text-align: center;
             padding: 20px 0;
-            font-family: Arial, sans-serif;
-            height: fit-content;  
         }
-        .footer-top a {
-              color: white;
-              text-decoration: none;
-              margin: 0 10px;
-              font-size: 14px;
-      }
 
-            .footer-icons {
-              margin: 20px 0;
-              }
+        .footer-icons img {
+            width: 32px;
+            height: 32px;
+            margin: 0 10px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
 
-.footer-icons img {
-  width: 32px;
-  height: 32px;
-  margin: 0 10px;
-  border-radius: 50%;
-}
-
-.footer-bottom p {
-  margin: 5px 0;
-  font-size: 14px;
-}
+        .footer-icons img:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 
 <body>
     <!-- Header -->
     <header>
-        <div class="header logo">
-            <img src="logo.jpeg" alt="logo" class="logo">
-        </div>
-        <div class="header">ADOPT A PET, CHANGE A LIFE</div>
+        <img src="loogo.jpg" alt="AdoptNest Logo" class="logo">
+        <h1>Adoptnest</h1>
         <nav class="navbar">
             <ul>
                 <li><a href="login.html">Login</a></li>
-                <li><a href="dashbord.html">User</a></li>
-                <li><a href="aarticles.html">Article</a></li>
-                <li><a href="new about us.html">About us</a></li>
-                <li><a href="contact us.html">Contact</a></li>
+                <li><a href="aarticles.html">Articles</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contactus.html">Contact</a></li>
+                <li><a href="dashboard.html">dashboard</a></li>
+                <li><a href="admin.html">Admin</a></li>
             </ul>
         </nav>
     </header>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -277,187 +258,74 @@
                 <input type="text" placeholder="Search by breed or location" />
                 <button type="submit">Search</button>
             </form>
+            <!-- New Button -->
+            <button class="view-pets-button" onclick="window.location.href='available-pets.html'">View Available Pets</button>
+        </div>
+    </section>
+    
+
+    <!-- Dynamic Pets Section -->
+    <section class="dynamic-pets">
+        <div class="text">
+            <h2>Why Adopt a Pet?</h2>
+            <p>Adopting a pet can bring endless joy to your life. It not only provides a loving home to an animal in need
+                but also allows you to experience the unconditional love and companionship of a furry friend. Start your
+                journey today and make a difference in their lives and yours.</p>
+        </div>
+        <div class="image-container">
+            <img src="m1.jpeg" alt="Pet 1" class="dynamic-image" style="opacity: 1;">
+            <img src="paka A.jpeg" alt="Pet 2" class="dynamic-image" style="opacity: 0;">
+            <img src="m2.png" alt="Pet 3" class="dynamic-image" style="opacity: 0;">
+            <img src="paka.png" alt="Pet 3" class="dynamic-image" style="opacity: 0;">
         </div>
     </section>
 
-    <!-- Featured Pets Section -->
-    <section class="featured-pets">
-        <h2>Featured Pets</h2>
-        <div class="pet-cards">
-            <!-- Pet Card 1 -->
-            <div class="pet-card">
-                <img src="mbwa A.jpeg" alt="Fluffy">
-                <div class="card-content">
-                    <li><strong>Name :</strong>Max</li>
-                    <li><strong>Species :</strong>Dog</li>
-                    <li><strong>Breed :</strong>Golden Retiever</li>
-                    <li><strong>Gender :</strong>Male</li>
-                    <li><strong>Age :</strong>15kg</li>
-                    <button>Adopt Me</button>
-                </div>
+    <!-- Adoption Process Section -->
+    <section class="adoption-process">
+        <h2>Our Adoption Process</h2>
+        <div class="steps">
+            <div class="step">
+                <img src="1a.jpg" alt="Step 1">
+                <p><strong>Step 1:</strong> Browse available pets and find your match.</p>
             </div>
-
-            <!-- Pet Card 2 -->
-            <div class="pet-card">
-                <img src="mbwa1.png" alt="Whiskers">
-                <div class="card-content">
-                    <li><strong>Name :</strong>Max</li>
-                    <li><strong>Species :</strong>Dog</li>
-                    <li><strong>Breed :</strong>Golden Retiever</li>
-                    <li><strong>Gender :</strong>Male</li>
-                    <li><strong>Age :</strong>15kg</li>
-                    <button>Adopt Me</button>
-                </div>
+            <div class="step">
+                <img src="2a.jpg" alt="Step 2">
+                <p><strong>Step 2:</strong> Submit your adoption application online.</p>
             </div>
-
-            <!-- Pet Card 3 -->
-            <div class="pet-card">
-                <img src="paka A.jpeg" alt="Buddy">
-                <div class="card-content">
-                    <li><strong>Name :</strong>Max</li>
-                    <li><strong>Species :</strong>Dog</li>
-                    <li><strong>Breed :</strong>Golden Retiever</li>
-                    <li><strong>Gender :</strong>Male</li>
-                    <li><strong>Age :</strong>15kg</li>
-                    <button>Adopt Me</button>
-                </div>
+            <div class="step">
+                <img src="3a.jpg" alt="Step 3">
+                <p><strong>Step 3:</strong> Meet your chosen pet in person.</p>
             </div>
-            <div class="pet-card">
-                <img src="paka A.jpeg" alt="Buddy">
-                <div class="card-content">
-                    <li><strong>Name :</strong>Max</li>
-                    <li><strong>Species :</strong>Dog</li>
-                    <li><strong>Breed :</strong>Golden Retiever</li>
-                    <li><strong>Gender :</strong>Male</li>
-                    <li><strong>Age :</strong>15kg</li>
-                    <button>Adopt Me</button>
-                </div>
-            </div>
-            <div class="pet-card">
-                <img src="paka A.jpeg" alt="Buddy">
-                <div class="card-content">
-                    <li><strong>Name :</strong>Max</li>
-                    <li><strong>Species :</strong>Dog</li>
-                    <li><strong>Breed :</strong>Golden Retiever</li>
-                    <li><strong>Gender :</strong>Male</li>
-                    <li><strong>Age :</strong>15kg</li>
-                    <button>Adopt Me</button>
-                </div>
-            </div>
-            <div class="pet-card">
-                <img src="paka A.jpeg" alt="Buddy">
-                <div class="card-content">
-                    <li><strong>Name :</strong>Max</li>
-                    <li><strong>Species :</strong>Dog</li>
-                    <li><strong>Breed :</strong>Golden Retiever</li>
-                    <li><strong>Gender :</strong>Male</li>
-                    <li><strong>Age :</strong>15kg</li>
-                    <button>Adopt Me</button>
-                </div>
-            </div>
-            <div class="pet-card">
-                <img src="paka A.jpeg" alt="Buddy">
-                <div class="card-content">
-                    <li><strong>Name :</strong>Max</li>
-                    <li><strong>Species :</strong>Dog</li>
-                    <li><strong>Breed :</strong>Golden Retiever</li>
-                    <li><strong>Gender :</strong>Male</li>
-                    <li><strong>Age :</strong>15kg</li>
-                    <button>Adopt Me</button>
-                </div>
-            </div>
-            <div class="pet-card">
-                <img src="paka A.jpeg" alt="Buddy">
-                <div class="card-content">
-                    <li><strong>Name :</strong>Max</li>
-                    <li><strong>Species :</strong>Dog</li>
-                    <li><strong>Breed :</strong>Golden Retiever</li>
-                    <li><strong>Gender :</strong>Male</li>
-                    <li><strong>Age :</strong>15kg</li>
-                    <button>Adopt Me</button>
-                </div>
-            </div>
-            <div class="pet-card">
-                <img src="paka A.jpeg" alt="Buddy">
-                <div class="card-content">
-                    <li><strong>Name :</strong>Max</li>
-                    <li><strong>Species :</strong>Dog</li>
-                    <li><strong>Breed :</strong>Golden Retiever</li>
-                    <li><strong>Gender :</strong>Male</li>
-                    <li><strong>Age :</strong>15kg</li>
-                    <button>Adopt Me</button>
-                </div>
-            </div>
-
-            <!-- Pet Card 4 -->
-            <div class="pet-card">
-                <img src="paka.png" alt="Max">
-                <div class="card-content">
-                    <li><strong>Name :</strong>Max</li>
-                    <li><strong>Species :</strong>Dog</li>
-                    <li><strong>Breed :</strong>Golden Retiever</li>
-                    <li><strong>Gender :</strong>Male</li>
-                    <li><strong>Age :</strong>15kg</li>
-                    <button>Adopt Me</button>
-                </div>
-            </div>
-
-            <!-- Pet Card 5 -->
-            <div class="pet-card">
-                <img src="nn.png" alt="Charlie">
-                <div class="card-content">
-                    <li><strong>Name :</strong>Max</li>
-                    <li><strong>Species :</strong>Dog</li>
-                    <li><strong>Breed :</strong>Golden Retiever</li>
-                    <li><strong>Gender :</strong>Male</li>
-                    <li><strong>Age :</strong>15kg</li>
-                    <button>Adopt Me</button>
-                </div>
-            </div>
-
-            <!-- Pet Card 6 -->
-            <div class="pet-card">
-                <img src="paka.png" alt="Luna">
-                <div class="card-content">
-                    <li><strong>Name :</strong>Max</li>
-                    <li><strong>Species :</strong>Dog</li>
-                    <li><strong>Breed :</strong>Golden Retiever</li>
-                    <li><strong>Gender :</strong>Male</li>
-                    <li><strong>Age :</strong>15kg</li>
-                    <button>Adopt Me</button>
-                </div>
-
-                
-                
+            <div class="step">
+                <img src="4a.jpg" alt="Step 4">
+                <p><strong>Step 4:</strong> Complete the adoption process and bring your new friend home.</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-top">
-          <a href="#">Shelter & Rescue Registration</a> |
-          <a href="#">Sitemap</a> |
-          <a href="#">Terms of Service</a> |
-          <a href="#">Notice at Collection</a> |
-          <a href="#">Privacy Policy (updated)</a> |
-          <a href="#">Accessibility</a> |
-          <a href="#">Cookie Policy</a> |
-          <a href="#">Your Privacy Choices</a>
-        </div>
-      
         <div class="footer-icons">
-          <a href="#"><img src="fb.png" alt="Facebook"></a>
-          <a href="#"><img src="x.png" alt="Twitter"></a>
-          <a href="#"><img src="ig.jpeg" alt="Instagram"></a>
-          <a href="#"><img src="ytube.png" alt="you tube"></a>
+            <img src="fb.png" alt="Facebook">
+            <img src="x.png" alt="Twitter">
+            <img src="ig.jpeg" alt="Instagram">
         </div>
-      
-        <div class="footer-bottom">
-          <p>&copy;2024 Petfinder.com</p>
-          <p>All trademarks are owned by Société des Produits Nestlé S.A., or used with permission.</p>
-        </div>
-      </footer>
+        <p>&copy; 2025 AdoptNest. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for dynamic image change
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.dynamic-image');
+
+        function changeImage() {
+            images[currentImageIndex].style.opacity = 0; // Hide current image
+            currentImageIndex = (currentImageIndex + 1) % images.length; // Move to next image
+            images[currentImageIndex].style.opacity = 1; // Show next image
+        }
+
+        setInterval(changeImage, 3000); // Change image every 3 seconds
+    </script>
 </body>
 
 </html>
